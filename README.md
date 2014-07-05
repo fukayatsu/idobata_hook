@@ -1,6 +1,10 @@
 # IdobataHook
 
-TODO: Write a gem description
+A client for Idobata's Generic Hook
+
+[![Build Status](https://travis-ci.org/fukayatsu/idobata_hook.svg?branch=master)](https://travis-ci.org/fukayatsu/idobata_hook)
+[![Coverage Status](https://img.shields.io/coveralls/fukayatsu/idobata_hook.svg)](https://coveralls.io/r/fukayatsu/idobata_hook)
+[![Code Climate](https://codeclimate.com/github/fukayatsu/idobata_hook.png)](https://codeclimate.com/github/fukayatsu/idobata_hook)
 
 ## Installation
 
@@ -18,7 +22,19 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+```ruby
+client = IdobataHook::Client.new("https://idobata.io/hook/generic/***")
+client.send('hello, world')
+client.send("<h1>hi</h1>", format: :html)
+client.send('Look at this', image_path: '/path/to/image.png')
+client.send([
+  {'label-success' => 'build passing!' }, #=> <span class="label label-success">build passing!</span>
+  { badge: '123' },                       #=> <span class="badge">123</span>
+  { emoji: 'smile'},                      #=> <img class="emoji" alt=":smile:" src="/images/emoji/smile.png" height="20" width="20">
+  "Foooo!",                               #=> Foooo!
+  { fa: 'camera-retro' },                 #=> <i class="fa fa-camera-retro"></i>
+])
+```
 
 ## Contributing
 
