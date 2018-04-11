@@ -27,7 +27,6 @@ module IdobataHook
       @faraday ||= Faraday.new(url: @hook_url, headers: default_headers) do |conn|
         conn.request  :multipart
         conn.request  :url_encoded             # form-encode POST params
-        conn.response :logger                  # log requests to STDOUT
         conn.adapter  Faraday.default_adapter  # make requests with Net::HTTP
       end
     end
